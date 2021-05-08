@@ -9,8 +9,24 @@
     <script defer src="./app.js"></script>
   </head>
   <body>
+    <div id="drawer">
+      <div id="drawer-toogle"><</div>
+      <div class="todo-container">
+        <h3>To-Do</h3>
+        <div class="todolist-container">
+          <ul id="todolist">
+            <li><div id="task-name">sadasdasdasdasdsdasdsddasdasdasdasdasdasdasdasdassadasd</div>
+            <button id="remove">x</button>
+            </li>
+          </ul>
+        </div>
+        <input type="text" name="task" id="input-task" placeholder="Enter Task">
+          <button id="clear">Clear</button>
+
+      </div>
+    </div>
     <main>
-      <h1>Memento Mori</h1>
+      <h1 id="heading">Memento Mori</h1>
       <div class="quote">
         <q
           >It is not that we have a short time to live, but that we waste a lot
@@ -26,11 +42,30 @@
         <h4 class="quoter">-Seneca, On the Shortness of Life</h4>
       </div>
       <div class="data">
-            <h3>Set Date Of Birth: <span></span> <input type="date" name="dob" id="dob"> </h3>
-            
-            <h1 id="age-container">Your Age:
+          <section class="progress-section">
+            <div class="progress-container">
+               <h3 class="progress-name">Day :</h3> 
+              <div class="progress-bars">
+                <div class="progress" id="day"></div>
+              </div>
+            </div>
+            <div class="progress-container">
+               <h3 class="progress-name">Month :</h3> 
+              <div class="progress-bars">
+                <div class="progress" id="month"></div>
+              </div>
+            </div><div class="progress-container">
+               <h3 class="progress-name">Year :</h3> 
+              <div class="progress-bars">
+                <div class="progress" id="year"></div>
+              </div>
+            </div>
+            </section>    
+            <h3 id="age-container">Age:
                 <span id="age"></span>
-            </h1>
+            </h3>
+        
+            <h3 id="setdob">Set Date Of Birth: <span></span> <input type="date" name="dob" id="dob">
       </div>
     </main>
   </body>

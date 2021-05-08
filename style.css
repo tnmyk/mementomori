@@ -1,45 +1,175 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    user-select: none;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  user-select: none;
+  outline: none;
 }
-body{
-    display:flex;
-    align-items:center;
-    min-height:100vh;
-    flex-direction: column;
-    width: 100vw;
+body {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+  width: 100vw;
+  overflow-x: hidden;
+
 }
-main{
-    height:70vh;
-    width:80vw;
-    display:flex;
-    flex-direction: column;
-    align-items:center;
-    margin-top: 3vh;
+#heading {
+  border-bottom: 1px solid black;
 }
-.quote{
-    display:flex;
-    flex-direction: column;
-    text-align: center;
-    margin-top: 8vh;
+main {
+  height: 70vh;
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3vh;
 }
-.quoter{
-    margin-top: 2vh;
-    text-align: right;
+.quote {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 8vh;
+}
+.quoter {
+  margin-top: 2vh;
+  text-align: right;
 }
 
-.data{
-    margin-top: 12vh;
-    display:flex;
-    flex-direction: column;
-    align-items:center;
-    width: 100%;
+.data {
+  margin-top: 12vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
-#age-container{
-    width: 38vw;
-    /* background-color:saddlebrown; */
-    margin-top: 8vh;
+#age-container {
+  /* width: 18vw; */
+  /* background-color:saddlebrown; */
+  margin-top: 8vh;
+  overflow-x: hidden;
+}
+#setdob {
+  position: absolute;
+  bottom: 1vh;
+  left: 1vw;
+}
+.progress-container {
+  width: 24vw;
+  position: relative;
+  /* background-color:rebeccapurple; */
+}
+.progress-name {
+  display: inline-block;
+}
+.progress-bars {
+  top: 0.9vh;
+  display: inline-block;
+  width: 17vw;
+  height: 1.2em;
+  border-radius: 3px;
+  border: 2px solid black;
+  position: absolute;
+  right: 0;
+}
+.progress {
+  width: 0%;
+  height: 100%;
+  background-color: black;
+}
+
+#drawer {
+  position: absolute;
+  height: 100vh;
+  /* width: 10vw; */
+  right: -25vw;
+  top: 0;
+  background-color: rgb(56, 55, 55);
+  color: white;
+  display: flex;
+  align-items: center;
+  transition:0.55s;
+  /* justify-content: center; */
+}
+#drawer-toogle {
+  width: 3vw;
+    height:100%;
+  background-color: rgb(32, 32, 32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    cursor: pointer;
+}
+.todo-container {
+  width: 25vw;
+  height:100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.todo-container h3{
+    width:25vw;
+    border-bottom: 1px solid white;
+    text-align: center;
+}
+.todo-container ul{
+    /* background-color:rebeccapurple; */
+    width:25vw;
+    list-style: none;
+    height:75vh;
+    overflow-y:auto;
+    overflow-x: hidden;
+    word-break: break-all;
+}
+#todolist::-webkit-scrollbar{
+    width:1.3vh;
+    /* height:100%; */
+    background-color:black;
+}
+#todolist::-webkit-scrollbar-thumb{
+    background-color:white;
+}
+#task-name{
+  width:75%;
+}
+.todo-container li{
+    padding:0.5em 1em;
+    border-bottom: 1px solid rgb(110, 110, 110);
+    display:flex;
+    align-items: center;
+    justify-content:space-between;
+}
+#remove{
+  height:1.5em;
+  width:1.5em;
+  background-color:rgb(255, 85, 85);
+  border-radius:25px;
+   border: none;
+  cursor: pointer;
+
+ 
+}
+#input-task{
+  color: white;
+  padding:0.2em;
+  font-size:1.3em;
+  background-color:transparent;
+  border: none;
+  border: 1px solid whitesmoke;
+  margin-top:3vh;
+  border-radius:5px;
+  width:80%;
+}
+#input-task:focus{
+  border: 1.7px solid whitesmoke;
+}
+#clear{
+  padding: 0.2em 1em;
+  border-radius:5px;
+  margin-top:1em;
+  background-color:rgb(255, 85, 85);
+  border: 1px solid gray;
+  cursor: pointer;
 }
