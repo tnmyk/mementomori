@@ -68,7 +68,7 @@ function setAge() {
 
   if(isNaN((rightnow.getTime() - dateofbirth) /
     (1000 * 60 * 60 * 24 * 365)
-  )) age.textContent = "Enter The Age";
+  )) age.textContent = "Set Date of Birth";
   else{
     age.textContent = (
       (rightnow.getTime() - dateofbirth) /
