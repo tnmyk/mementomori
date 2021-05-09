@@ -63,10 +63,18 @@ function setAge() {
     (tmonth / (noofdaysinmonth * 864)
   ).toPrecision(4)}%`;
   progressMonth.style.width = `${tmonth / (noofdaysinmonth * 864)}%`;
-  age.textContent = (
-    (rightnow.getTime() - dateofbirth) /
+  
+
+  if(isNaN((rightnow.getTime() - dateofbirth) /
     (1000 * 60 * 60 * 24 * 365)
-  ).toPrecision(16);
+  )) age.textContent = "Enter The Age";
+  else{
+    age.textContent = (
+      (rightnow.getTime() - dateofbirth) /
+      (1000 * 60 * 60 * 24 * 365)
+    ).toPrecision(10);
+  }
+  
 }
 
 var inputTask = document.querySelector("#input-task");
