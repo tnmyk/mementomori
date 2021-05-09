@@ -58,6 +58,8 @@ main {
   position: absolute;
   bottom: 1vh;
   left: 1vw;
+  font-size: 0.95em;
+  font-weight: 500;
 }
 .progress-container {
   width: 28.5vw;
