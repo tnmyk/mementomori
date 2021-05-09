@@ -35,9 +35,10 @@ document.querySelector("#year-percent").textContent = `${
 progressMonth.style.width = `${tmonth / (noofdaysinmonth * 864)}%`;
 var interval;
 dob.setAttribute("max", today);
+interval = setInterval(setAge, 250);
+
 if (localStorage.getItem("dob")) {
   dob.value = localStorage.getItem("dob");
-  interval = setInterval(setAge, 250);
 }
 var dateofbirth = dob.valueAsNumber;
 dob.addEventListener("change", () => {
