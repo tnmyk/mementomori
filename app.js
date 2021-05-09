@@ -95,7 +95,7 @@ tasklist.addEventListener("click",(e)=>{
     
     target.parentElement.querySelector("#task-name").style.color = "gray";
     target.parentElement.querySelector("#task-name").style.textDecoration = "line-through";
-    target.style.backgroundColor ="lightgreen"
+    target.style.backgroundColor ="black"
     target.style.backgroundImage = "url('./images/done.svg')" 
     tasklist.removeChild(target.parentElement);
     console.log(target.parentElement)
