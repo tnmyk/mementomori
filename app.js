@@ -21,27 +21,32 @@ var gettimetoday = today;
 today = year + "-" + month + "-" + day;
 var noofdaysinmonth = new Date(year, month, 0).getDate();
 var tseconds = hours * 60 * 60 + minutes * 60 + seconds;
-progressDay.style.width = `${tseconds / 864}%`;
-var tmonth = tseconds + day * 86400;
+// progressDay.style.width = `${tseconds / 864}%`;
+// document.querySelector("#day-percent").textContent = `${(tseconds / 864).toPrecision(4)}%`
+var tmonth = tseconds + (day) * 86400;
 var tyear = (gettimetoday.getTime() - new Date(year, 0).getTime()) / 1000;
 var noofsecinyear =
   (new Date(year + 1, 0).getTime() - new Date(year, 0).getTime()) / 1000;
 
 progressYear.style.width = `${(tyear / noofsecinyear) * 100}%`;
+document.querySelector("#year-percent").textContent = `${
+  ((tyear / noofsecinyear) * 100
+).toPrecision(4)}%`;
 progressMonth.style.width = `${tmonth / (noofdaysinmonth * 864)}%`;
 var interval;
 dob.setAttribute("max", today);
 if (localStorage.getItem("dob")) {
   dob.value = localStorage.getItem("dob");
-  interval = setInterval(setAge, 1000);
+  interval = setInterval(setAge, 250);
 }
 var dateofbirth = dob.valueAsNumber;
 dob.addEventListener("change", () => {
   localStorage.setItem("dob", dob.value);
   dateofbirth = dob.valueAsNumber;
   clearInterval(interval);
-  interval = setInterval(setAge, 1000);
+  interval = setInterval(setAge, 250);
 });
+setAge();
 
 function setAge() {
   var rightnow = new Date();
@@ -50,11 +55,13 @@ function setAge() {
     rightnow.getHours() * 60 * 60 +
     rightnow.getMinutes() * 60 +
     rightnow.getSeconds();
-
+  document.querySelector("#day-percent").textContent = `${(tseconds / 864).toPrecision(4)}%`;
   progressDay.style.width = `${tseconds / 864}%`;
 
-  tmonth = tseconds + rightnow.getDate() * 86400;
-
+  tmonth = tseconds + (rightnow.getDate()-1) * 86400;
+  document.querySelector("#month-percent").textContent = `${
+    (tmonth / (noofdaysinmonth * 864)
+  ).toPrecision(4)}%`;
   progressMonth.style.width = `${tmonth / (noofdaysinmonth * 864)}%`;
   age.textContent = (
     (rightnow.getTime() - dateofbirth) /
@@ -66,6 +73,30 @@ var inputTask = document.querySelector("#input-task");
 var tasklist = document.querySelector('#todolist');
 var drawertoogle = document.querySelector("#drawer-toogle");
 var drawerin =false;
+
+if(localStorage.getItem("tasks")){
+  tasklist.innerHTML = localStorage.getItem("tasks");
+}
+tasklist.addEventListener("click",(e)=>{
+  var target = e.target;
+  if(target.id!='checkbox') return;
+  if(target.parentElement.querySelector('#task-name').style.color!='gray'){
+    target.parentElement.querySelector("#task-name").style.color = "gray";
+    target.parentElement.querySelector("#task-name").style.textDecoration = "line-through";
+    target.style.backgroundColor ="lightgreen"
+    target.style.backgroundImage = "url('./images/done.svg')" 
+  }
+  else{
+    target.parentElement.querySelector("#task-name").style.color = "white";
+    target.parentElement.querySelector("#task-name").style.textDecoration = "line-through";
+    target.parentElement.querySelector("#task-name").style.textDecoration =
+      "none";
+    target.style.backgroundColor = "white";
+    target.style.backgroundImage = "none"; 
+  }
+  localStorage.setItem("tasks", tasklist.innerHTML);
+
+})
 drawertoogle.addEventListener('click',()=>{
   if(!drawerin){
     document.querySelector('#drawer').style.right="0";
@@ -76,16 +107,15 @@ drawertoogle.addEventListener('click',()=>{
       document.querySelector("#drawer").style.right = "-25vw";
       drawerin = false;
     drawertoogle.textContent = "<";
-
-
   }
 })
 document.addEventListener("keydown", (e) => {
   if (e.key == "Enter" && inputTask.value.length>0) {
-    tasklist.innerHTML += `<li><div id="task-name">${inputTask.value}</div>
-            <button id="remove">x</button>
+    tasklist.innerHTML += `<li><div id="checkbox"></div><div id="task-name">${inputTask.value}</div>
+            <button id="remove"></button>
             </li>`;
     inputTask.value = ""
+  localStorage.setItem("tasks", tasklist.innerHTML);
   }
   
 });
@@ -95,8 +125,10 @@ document.querySelector('#clear').addEventListener('click', () => {
   
   if (
     tasklist.children.length && confirm("Are you sure you want to clear the list?")
-  )
+  ){
     tasklist.innerHTML = "";
+  localStorage.setItem("tasks", tasklist.innerHTML);
+  }
 })
 
 var remove = document.querySelector(".remove")
@@ -104,6 +136,8 @@ tasklist.addEventListener('click',(e) => {
   var target = e.target;
   if(target.id=="remove"){
     tasklist.removeChild(target.parentElement);
+  localStorage.setItem("tasks", tasklist.innerHTML);
+
   }
-  
 })
+

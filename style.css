@@ -32,6 +32,7 @@ main {
   flex-direction: column;
   text-align: center;
   margin-top: 8vh;
+  line-height: 1.6em;
 }
 .quoter {
   margin-top: 2vh;
@@ -57,7 +58,7 @@ main {
   left: 1vw;
 }
 .progress-container {
-  width: 24vw;
+  width: 29vw;
   position: relative;
   /* background-color:rebeccapurple; */
 }
@@ -72,7 +73,23 @@ main {
   border-radius: 3px;
   border: 2px solid black;
   position: absolute;
-  right: 0;
+  right: 5vw;
+}
+#month-percent{
+  position: absolute;
+  right:0;
+  top: 0.6vh;
+}
+#day-percent{
+  position: absolute;
+  right:0;
+  top: 0.6vh;
+
+}
+#year-percent{
+  position: absolute;
+  top: 0.6vh;
+  right:0;  
 }
 .progress {
   width: 0%;
@@ -144,12 +161,33 @@ main {
 #remove{
   height:1.5em;
   width:1.5em;
+  background-image: url("./images/cross.svg");
+  background-size: 160%;
+  background-position: 43% 0%;
+  background-repeat: no-repeat;
+
   background-color:rgb(255, 85, 85);
   border-radius:25px;
    border: none;
   cursor: pointer;
 
  
+}
+#checkbox{
+  width:1.1em;
+  height:1.1em;
+  background-color:white;
+  /* background-color:green; */
+  cursor: pointer;
+  border-radius:3px;
+  /* background-image: url('./images/done.svg'); */
+  background-size: 110%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#checkbox:hover{
+  background-color:rgb(221, 221, 221);
+  
 }
 #input-task{
   color: white;
