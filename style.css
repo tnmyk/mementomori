@@ -209,6 +209,7 @@ main {
   margin-top:6vh;
   border-radius:3px;
   width:80%;
+  caret-color: red;
 }
 #input-task:focus{
   border: 1.7px solid rgb(182, 182, 182);
