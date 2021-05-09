@@ -82,18 +82,25 @@ var inputTask = document.querySelector("#input-task");
 var tasklist = document.querySelector('#todolist');
 var drawertoogle = document.querySelector("#drawer-toogle");
 var drawerin =false;
+var numberoftasks = document.querySelector('#numberoftasks');
 
 if(localStorage.getItem("tasks")){
   tasklist.innerHTML = localStorage.getItem("tasks");
+  numberoftasks.innerHTML = `<h4>Tasks(${tasklist.children.length})</h4>`
 }
 tasklist.addEventListener("click",(e)=>{
   var target = e.target;
   if(target.id!='checkbox') return;
   if(target.parentElement.querySelector('#task-name').style.color!='gray'){
+    
     target.parentElement.querySelector("#task-name").style.color = "gray";
     target.parentElement.querySelector("#task-name").style.textDecoration = "line-through";
     target.style.backgroundColor ="lightgreen"
     target.style.backgroundImage = "url('./images/done.svg')" 
+    tasklist.removeChild(target.parentElement);
+    console.log(target.parentElement)
+    tasklist.innerHTML += target.parentElement.outerHTML;
+
   }
   else{
     target.parentElement.querySelector("#task-name").style.color = "white";
@@ -106,11 +113,15 @@ tasklist.addEventListener("click",(e)=>{
   localStorage.setItem("tasks", tasklist.innerHTML);
 
 })
+function setfocus(){
+  inputTask.focus()
+}
 drawertoogle.addEventListener('click',()=>{
   if(!drawerin){
     document.querySelector('#drawer').style.right="0";
     drawertoogle.textContent = ">";
     drawerin=true;
+    setTimeout(setfocus, 500);
   }
   else{
       document.querySelector("#drawer").style.right = "-25vw";
@@ -124,6 +135,7 @@ document.addEventListener("keydown", (e) => {
             <button id="remove"></button>
             </li>`;
     inputTask.value = ""
+  numberoftasks.innerHTML = `<h4>Tasks(${tasklist.children.length})</h4>`;
   localStorage.setItem("tasks", tasklist.innerHTML);
   }
   
@@ -136,6 +148,8 @@ document.querySelector('#clear').addEventListener('click', () => {
     tasklist.children.length && confirm("Are you sure you want to clear the list?")
   ){
     tasklist.innerHTML = "";
+  numberoftasks.innerHTML = `<h4>Tasks(${tasklist.children.length})</h4>`;
+
   localStorage.setItem("tasks", tasklist.innerHTML);
   }
 })
@@ -146,6 +160,7 @@ tasklist.addEventListener('click',(e) => {
   if(target.id=="remove"){
     tasklist.removeChild(target.parentElement);
   localStorage.setItem("tasks", tasklist.innerHTML);
+  numberoftasks.innerHTML = `<h4>Tasks(${tasklist.children.length})</h4>`;
 
   }
 })

@@ -130,18 +130,20 @@ main {
     width:25vw;
     border-bottom: 1px solid white;
     text-align: center;
+    padding: 0.3em;
+    /* margin-bottom: 1em; */
 }
 .todo-container ul{
     /* background-color:rebeccapurple; */
     width:25vw;
     list-style: none;
-    height:75vh;
+    height:70vh;
     overflow-y:auto;
     overflow-x: hidden;
     word-break: break-all;
 }
 #todolist::-webkit-scrollbar{
-    width:1.3vh;
+    width:0.2vw;
     /* height:100%; */
     background-color:black;
 }
@@ -159,16 +161,16 @@ main {
     justify-content:space-between;
 }
 #remove{
-  height:1.5em;
-  width:1.5em;
+  height:1.2em;
+  width:1.2em;
   background-image: url("./images/cross.svg");
   background-size: 160%;
-  background-position: 43% 0%;
+  background-position: 47% -10%;
   background-repeat: no-repeat;
 
-  background-color:rgb(255, 85, 85);
+  background-color:rgb(255, 60, 60);
   border-radius:25px;
-   border: none;
+  border: none;
   cursor: pointer;
 
  
@@ -192,12 +194,12 @@ main {
 #input-task{
   color: white;
   padding:0.2em;
-  font-size:1.3em;
+  font-size:1.1em;
   background-color:transparent;
   border: none;
-  border: 1px solid whitesmoke;
-  margin-top:3vh;
-  border-radius:5px;
+  border: 1px solid white;
+  margin-top:6vh;
+  border-radius:3px;
   width:80%;
 }
 #input-task:focus{
@@ -206,8 +208,14 @@ main {
 #clear{
   padding: 0.2em 1em;
   border-radius:5px;
-  margin-top:1em;
+  margin-top:2.5em;
   background-color:rgb(255, 85, 85);
   border: 1px solid gray;
   cursor: pointer;
+  color: white;
+}
+#numberoftasks{
+  position:absolute;
+  right:4vw;
+  bottom:1vh;
 }
